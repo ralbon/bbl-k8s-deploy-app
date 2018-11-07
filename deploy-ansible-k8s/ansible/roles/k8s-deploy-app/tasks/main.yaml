@@ -1,0 +1,10 @@
+---
+
+- name: deploy App
+  k8s:
+    state: present
+    definition: "{{ lookup('template', '{{ item }}.j2') | from_yaml }}"
+  loop:
+    - deployment-kubernetes-app.yaml
+    - service-kubernetes-app.yaml
+    - ingress-kubernetes-app.yaml
